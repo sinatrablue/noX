@@ -1,0 +1,28 @@
+{
+  "name": "nox",
+  "version": "0.0.1",
+  "description": "First Electron App, a base for future devs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinatrablue/noX.git"
+  },
+  "keywords": [
+    "electron",
+    "node",
+    "nodejs"
+  ],
+  "author": "Robin Simonot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinatrablue/noX/issues"
+  },
+  "homepage": "https://github.com/sinatrablue/noX#readme",
+  "devDependencies": {
+    "electron": "^20.0.1"
+  }
+}
