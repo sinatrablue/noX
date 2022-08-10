@@ -1,0 +1,1 @@
+document.getElementById('info').innerText = `noX v.${versions.nox()}, using Electron v.${versions.electron()}`;

@@ -1,10 +1,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'"
+        />
+        <meta
+        http-equiv="X-Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'"
+        />
         <title>noX</title>
     </head>
     <body>
-        <h1>noX  v.<span id="nox-version"></span></h1> <!--TODO : insert node pkg version via JS code-->
-        Using Electron v.<span id="electron-version"></span>
+        <h1>### noX ###</h1>
+        <p id="info">Infos about the app</p>
     </body>
+    <script src="./renderer.js"></script>
 </html>
