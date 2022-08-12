@@ -9,8 +9,8 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js'),
         },
     })
-    ipcMain.handle('ping', () => 'PONG');
-    win.loadFile('index.html');
+    ipcMain.handle('ping', () => 'PONG')
+    win.loadFile('index.html')
 }
 
 app.whenReady().then( () => {
