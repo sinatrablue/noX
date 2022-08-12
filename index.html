@@ -9,11 +9,12 @@
         http-equiv="X-Content-Security-Policy"
         content="default-src 'self'; script-src 'self'"
         />
-        <title>noX</title>
+        <title>First Electron App</title>
     </head>
     <body>
-        <h1>### noX ###</h1>
+        <h1 id="title-page">Random Electron App</h1>
         <p id="info">Infos about the app</p>
+        <button id="reveal-btn" type="button">Reveal Magic</button>
+        <script src="./renderer.js"></script>
     </body>
-    <script src="./renderer.js"></script>
 </html>

@@ -1,6 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
+function handleRevealTitle(event, title) {
+    const webContents = event.sender;
+    const win = BrowserWindow.fromWebContents(webContents);
+    win.setTitle(title);
+}
+
 const createWindow = () => {
     const win = new BrowserWindow({
         width: 800,
@@ -9,11 +15,11 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js'),
         },
     })
-    ipcMain.handle('ping', () => 'PONG')
     win.loadFile('index.html')
 }
 
 app.whenReady().then( () => {
+    ipcMain.on('reveal-title', handleRevealTitle);
     createWindow();
 
     app.on('activate', () => {
