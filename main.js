@@ -48,3 +48,9 @@ app.whenReady().then( () => {
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
+
+ipcMain.on('counter-value', (_event, value) => {
+    console.log('value: ', value)
+    const win = BrowserWindow.fromWebContents(_event.sender);
+    if (value == 3) win.webContents.send('reveal-title-v2')
+})
