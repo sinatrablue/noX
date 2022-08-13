@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
 
 function handleRevealTitle(event, title) {
@@ -14,7 +14,25 @@ const createWindow = () => {
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
-    })
+    });
+
+    const menu = Menu.buildFromTemplate([
+        {
+        label: app.name,
+        submenu: [
+            {
+            click: () => win.webContents.send('update-counter', 1),
+            label: 'Increment',
+            },
+            {
+            click: () => win.webContents.send('update-counter', -1),
+            label: 'Decrement',
+            }
+        ]
+        }
+    ])
+    Menu.setApplicationMenu(menu)
+
     win.loadFile('index.html')
 }
 

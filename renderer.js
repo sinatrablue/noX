@@ -9,3 +9,10 @@ revealBtn.addEventListener('click', () => {
     const title_h1 = "### Welcome to noX ###";
     titlePage.innerText = title_h1;
 })
+
+const counter = document.getElementById('counter')
+window.electronAPI.onUpdateCounter((_event, value) => {
+    const oldValue = Number(counter.innerText)
+    const newValue = oldValue + value
+    counter.innerText = newValue
+})
