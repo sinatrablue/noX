@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
+let win;
 
 function handleRevealTitle(event, title) {
     const webContents = event.sender;
@@ -8,14 +9,20 @@ function handleRevealTitle(event, title) {
 }
 
 const createWindow = () => {
-    const win = new BrowserWindow({
+    return new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         },
     });
+}
 
+const showLoginWindow = () => {
+    win.loadFile('login.html').then(() => {win.show()})
+}
+
+const showMainWindow = () => {
     const menu = Menu.buildFromTemplate([
         {
         label: app.name,
@@ -33,24 +40,29 @@ const createWindow = () => {
     ])
     Menu.setApplicationMenu(menu)
 
-    win.loadFile('index.html')
+    win.loadFile('index.html').then(() => {win.show()})
 }
 
 app.whenReady().then( () => {
     ipcMain.on('reveal-title', handleRevealTitle);
-    createWindow();
-
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) createWindow()
-    })
+    win = createWindow();
+    showLoginWindow();
 })
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
 
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+
 ipcMain.on('counter-value', (_event, value) => {
     console.log('value: ', value)
     const win = BrowserWindow.fromWebContents(_event.sender);
     if (value == 3) win.webContents.send('reveal-title-v2')
+})
+
+ipcMain.on('authentification-ok', () => {
+    showMainWindow()
 })

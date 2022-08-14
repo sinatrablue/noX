@@ -1,6 +1,6 @@
 {
   "name": "nox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "First Electron App, a base for future devs",
   "main": "main.js",
   "scripts": {
