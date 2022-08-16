@@ -1,7 +1,14 @@
+import { CSS, px, pct, DynamicCSS } from 'electron-css';
+import { darken } from 'electron-css/dist/color';
+import { BodyStyle, ButtonStyle} from './global_theme.style.js'
+
+//document.body.style = BodyStyle;
+
 const info = document.getElementById('info');
 info.innerText = `noX v-${versions.nox()}, using Electron v-${versions.electron()}`;
 
 const revealBtn = document.getElementById('reveal-btn');
+//revealBtn.style = ButtonStyle;
 const titlePage = document.getElementById('title-page');
 revealBtn.addEventListener('click', () => {
     const title = "noX";
