@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('noxLogin', {
-  loginOk: () => ipcRenderer.send('authentification-ok')
+  loginOk: (login) => ipcRenderer.send('authentification-ok', login)
 })
 
 contextBridge.exposeInMainWorld('versions', {

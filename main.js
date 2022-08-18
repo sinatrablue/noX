@@ -63,6 +63,7 @@ ipcMain.on('counter-value', (_event, value) => {
     if (value == 3) win.webContents.send('reveal-title-v2')
 })
 
-ipcMain.on('authentification-ok', () => {
+ipcMain.on('authentification-ok', (_event, login) => {
+    console.log('login: ', login)
     showMainWindow()
 })
