@@ -3,7 +3,7 @@ var init = function(loginTxt){
     const protoLoader = require('@grpc/proto-loader');
 
     const packageDefinition = protoLoader.loadSync(
-        './client.proto', { 
+        './proto/noxlogin.proto', { 
             keepCase: true,
             longs: String,
             enums: String,

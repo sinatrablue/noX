@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package noxLogin;
+
+service Login {
+    rpc AuthentificateUser (LoginRequest) returns (LoginResponse);
+}
+
+message LoginRequest {
+    string login = 1;
+}
+
+message LoginResponse {
+    string response = 1;
+}
